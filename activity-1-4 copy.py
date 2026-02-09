@@ -17,12 +17,14 @@ st.title("Echo Agent")
 if "history" not in st.session_state:
     st.session_state.history = []
 
-# Add a button to clear the chat history
-if st.button("Clear History", icon=":material/delete:"):
-    st.session_state.history = []
-
-# Add a button to download the chat history as a text file
-st.download_button("Download Chat History", data=str(st.session_state.history), file_name="chat_history.txt", mime="text/plain",icon=":material/download:")
+col1, col2 = st.columns([1, 3], gap="small")
+with col1:
+    # Add a button to clear the chat history
+    if st.button("Clear History", icon=":material/delete:"):
+        st.session_state.history = []
+with col2:
+    # Add a button to download the chat history as a text file
+    st.download_button("Download Chat History", data=str(st.session_state.history), file_name="chat_history.txt", mime="text/plain",icon=":material/download:")
 
 # Create an input box for the user to type a message
 user_text = st.chat_input("Type a message...")
