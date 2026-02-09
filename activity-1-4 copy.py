@@ -13,13 +13,16 @@ st.set_page_config(page_title="Echo Agent")
 # Display the main title of the web application
 st.title("Echo Agent")
 
-# Add a button to clear the chat history
-if st.button("Clear History"):
-    st.session_state.history = []
-
 # Initialize chat history
 if "history" not in st.session_state:
     st.session_state.history = []
+
+# Add a button to clear the chat history
+if st.button("Clear History", icon=":material/delete:"):
+    st.session_state.history = []
+
+# Add a button to download the chat history as a text file
+st.download_button("Download Chat History", data=str(st.session_state.history), file_name="chat_history.txt", mime="text/plain",icon=":material/download:")
 
 # Create an input box for the user to type a message
 user_text = st.chat_input("Type a message...")
