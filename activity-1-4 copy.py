@@ -17,6 +17,7 @@ st.title("Echo Agent")
 if "history" not in st.session_state:
     st.session_state.history = []
 
+# Create two columns for the buttons
 col1, col2 = st.columns([1, 3], gap="small")
 with col1:
     # Add a button to clear the chat history
